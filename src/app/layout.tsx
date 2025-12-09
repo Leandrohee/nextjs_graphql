@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import '../styles/globals.css';
 import ApolloWrapper from '@/providers/apollo-provider';
 import { Toaster } from 'sonner';
+import TanStackProvider from '@/providers/tanstack-provider';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -27,14 +28,27 @@ export default function RootLayout({
   return (
     <html lang="en" className="w-full h-full">
       <ApolloWrapper>
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} 
+        <TanStackProvider>
+          <body
+            className={`${geistSans.variable} ${geistMono.variable} 
           antialiased w-full h-full bg-zinc-100`}
-        >
-          {children}
-          <Toaster position="top-center" />
-        </body>
+          >
+            {children}
+            <Toaster position="top-center" />
+          </body>
+        </TanStackProvider>
       </ApolloWrapper>
     </html>
   );
 }
+
+/**
+ * I'm using 2 providers, one for graphql and other for rest
+ *
+ * Graphql:
+ *  ApolloClient
+ *
+ * Rest:
+ *  TanTanStack
+ *
+ */

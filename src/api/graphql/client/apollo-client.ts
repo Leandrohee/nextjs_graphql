@@ -5,7 +5,7 @@ import { SetContextLink } from '@apollo/client/link/context';
 
 /* ------------------------------ USED WHEN SENDING JWT VIA HEADERS ----------------------------- */
 // const httpLink = new HttpLink({
-//   uri: process.env.NEXT_PUBLIC_BACKEND_URL + '/graphql',
+//   uri: process.env.NEXT_PUBLIC_BACKEND_URL + 'graphql',
 // });
 
 // const authLink = new SetContextLink((headers) => {
@@ -26,7 +26,7 @@ import { SetContextLink } from '@apollo/client/link/context';
 
 /* ------------------------------ USED WHEN SENDING JWT VIA COOKIES ----------------------------- */
 const link = new HttpLink({
-  uri: process.env.NEXT_PUBLIC_BACKEND_URL + '/graphql',
+  uri: process.env.NEXT_PUBLIC_BACKEND_URL + 'graphql',
   credentials: 'include',
 });
 

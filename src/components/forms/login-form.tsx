@@ -58,7 +58,7 @@ export default function LoginForm() {
         throw new Error('No token found!');
       }
 
-      toast.success(message, {
+      toast.success('User loged in successfully', {
         style: {
           background: '#79df8d',
         },
@@ -86,7 +86,7 @@ export default function LoginForm() {
         className=" min-w-[40%] min-h-[60%] bg-white py-6 px-14 
         rounded-4xl shadow-2xl flex items-center flex-col gap-5"
       >
-        <h3>Login</h3>
+        <h3 className="mt-20">Login</h3>
         <FormField
           control={form.control}
           name="email"

@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 dotenv.config(); // .env file
 
 const config: CodegenConfig = {
-  schema: process.env.NEXT_PUBLIC_BACKEND_URL + '/graphql',
+  schema: process.env.NEXT_PUBLIC_BACKEND_URL + 'graphql',
   documents: ['./src/api/graphql/**/*.tsx'],
   generates: {
     './src/api/graphql/__generated__/': {
