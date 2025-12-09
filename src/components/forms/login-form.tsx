@@ -20,6 +20,7 @@ import {
 } from '@/api/graphql/__generated__/graphql';
 import { toast } from 'sonner';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 interface FormPayload {
   email: string;
@@ -116,6 +117,9 @@ export default function LoginForm() {
         <Button className="w-[50%] hover:cursor-pointer" type="submit">
           Login
         </Button>
+        <Link className="mt-[62px] text-[12px]" href={'/register'}>
+          Register
+        </Link>
       </form>
     </Form>
   );

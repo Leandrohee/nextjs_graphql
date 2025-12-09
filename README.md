@@ -6,6 +6,9 @@
 - https://www.apollographql.com/docs/react/networking/authentication
 - https://www.apollographql.com/docs/react/migrating/apollo-client-4-migration#recommended-migration-approach
 - https://nextjs.org/docs/app/api-reference/file-conventions/proxy
+- https://ui.shadcn.com/docs/forms/react-hook-form
+- https://ui.shadcn.com/docs/components/form#build-your-form
+- https://zod.dev/api
 
 # Useful codes
 
