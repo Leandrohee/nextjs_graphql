@@ -1,11 +1,11 @@
 import axiosInstance from '../../axios';
 
-interface fnCreateNoteArgs {
+interface CreateNoteArgs {
   title: string;
   content: string;
 }
 
-export const fnCreateNote = async ({ title, content }: fnCreateNoteArgs) => {
+export const fnCreateNote = async ({ title, content }: CreateNoteArgs) => {
   try {
     const response = await axiosInstance.post('note/create', {
       title,
