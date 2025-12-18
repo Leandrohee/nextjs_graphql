@@ -1,13 +1,12 @@
+import { CreateNoteDto, CreateNoteResponse } from '../../__generated__/Api';
 import axiosInstance from '../../axios';
 
-interface CreateNoteArgs {
-  title: string;
-  content: string;
-}
-
-export const fnCreateNote = async ({ title, content }: CreateNoteArgs) => {
+export const fnCreateNote = async ({
+  title,
+  content,
+}: CreateNoteDto): Promise<CreateNoteResponse> => {
   try {
-    const response = await axiosInstance.post('note/create', {
+    const response = await axiosInstance.post<CreateNoteResponse>('note', {
       title,
       content,
     });

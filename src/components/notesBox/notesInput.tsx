@@ -3,7 +3,11 @@
 import { Button } from '../ui/button';
 import { Label } from '../ui/label';
 import { Textarea } from '../ui/textarea';
-import { useMutation } from '@tanstack/react-query';
+import {
+  QueryObserverResult,
+  RefetchOptions,
+  useMutation,
+} from '@tanstack/react-query';
 import { fnCreateNote } from '@/api/rest/post/note/create-note';
 import { toast } from 'sonner';
 import { useForm } from 'react-hook-form';
@@ -16,6 +20,7 @@ import {
   FormItem,
   FormMessage,
 } from '../ui/form';
+import { GetNoteResponse } from '@/api/rest/__generated__/Api';
 
 const formSchema = z.object({
   content: z.string().min(1, 'Content has to be at least 1 character'),
@@ -25,7 +30,13 @@ interface PayloadProps {
   content: string;
 }
 
-export default function NotesInput() {
+interface NotesInputProps {
+  refetchNotes: (
+    options?: RefetchOptions
+  ) => Promise<QueryObserverResult<GetNoteResponse[], Error>>;
+}
+
+export default function NotesInput({ refetchNotes }: NotesInputProps) {
   const { mutateAsync: createNote } = useMutation({ mutationFn: fnCreateNote });
   const hoje = new Date().toLocaleDateString();
   const form = useForm<z.infer<typeof formSchema>>({
@@ -44,12 +55,16 @@ export default function NotesInput() {
       if (!response) {
         throw new Error('Erro na resposta');
       }
+
+      refetchNotes();
+
       toast.success('Nota criada com sucesso', {
         style: {
           background: '#79df8d',
         },
         duration: 1000,
       });
+
       form.resetField('content');
     } catch (error) {
       console.error(error);

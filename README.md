@@ -26,4 +26,5 @@ yarn add react-hook-form zod
 yarn add axios @tanstack/react-query
 yarn add @apollo/client graphql rxjs
 yarn add -D @graphql-codegen/cli @graphql-codegen/client-preset @graphql-codegen/typescript @graphql-codegen/typescript-operations
+yarn add swagger-typescript-api
 ```

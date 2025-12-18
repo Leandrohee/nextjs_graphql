@@ -1,17 +1,16 @@
+import { UpdateNoteDto, UpdateNoteResponse } from '../../__generated__/Api';
 import axiosInstance from '../../axios';
 
-export interface UpdateNoteArgs {
-  codNote: number;
-  title: string;
-  content: string;
-}
-
-export const fnUpdateNote = async (args: UpdateNoteArgs) => {
+export const fnUpdateNote = async ({
+  cod_note,
+  content,
+  title,
+}: UpdateNoteDto): Promise<UpdateNoteResponse> => {
   try {
-    const response = await axiosInstance.put('note/update', {
-      title: args.title,
-      content: args.content,
-      codNote: args.codNote,
+    const response = await axiosInstance.put<UpdateNoteResponse>('note', {
+      cod_note,
+      content,
+      title,
     });
 
     return response.data;
