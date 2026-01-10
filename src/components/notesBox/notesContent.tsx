@@ -113,10 +113,7 @@ export default function NotesContent({
   };
 
   return (
-    <div
-      className="w-full max-h-[70%] flex flex-col items-center 
-      gap-4 overflow-y-scroll mb-20"
-    >
+    <div className="w-full h-[70%] flex flex-col items-center gap-4 overflow-y-scroll mb-20">
       {notes &&
         notes.map((item, index) => (
           <div

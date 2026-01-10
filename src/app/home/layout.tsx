@@ -7,7 +7,7 @@ export default function HomeLayout({
   return (
     <div className="w-full h-full">
       <NavBar />
-      <div className="w-full h-[92vh]">{children}</div>
+      <div className="w-full h-[89vh]">{children}</div>
     </div>
   );
 }

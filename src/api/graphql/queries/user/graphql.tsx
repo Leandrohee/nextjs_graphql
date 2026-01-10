@@ -7,3 +7,12 @@ export const SIGNIN_QUERY = gql`
     }
   }
 `;
+
+export const SIGNOUT_QUERY = gql`
+  query SignOut_Query {
+    signOut {
+      success
+      message
+    }
+  }
+`;

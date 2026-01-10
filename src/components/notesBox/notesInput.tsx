@@ -22,6 +22,7 @@ import {
 } from '../ui/form';
 import { GetNoteResponse } from '@/api/rest/__generated__/Api';
 
+/* ----------------------------------------- zend config ---------------------------------------- */
 const formSchema = z.object({
   content: z.string().min(1, 'Content has to be at least 1 character'),
 });
@@ -74,7 +75,9 @@ export default function NotesInput({ refetchNotes }: NotesInputProps) {
 
   return (
     <div className="flex flex-col w-full gap-3">
-      <Label htmlFor="message">New note</Label>
+      <Label className="my-auto" htmlFor="message">
+        New note
+      </Label>
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(sendNote)}

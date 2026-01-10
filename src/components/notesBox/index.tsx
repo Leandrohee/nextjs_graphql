@@ -13,7 +13,7 @@ export default function NotesBox() {
 
   return (
     <section className="w-full px-6 py-4 h-full flex flex-col items-center">
-      <h2 className="mb-10">Notes</h2>
+      <h2 className="mb-10 ">Notes</h2>
       <NotesContent notes={dNotes} refetchNotes={refecthNotes} />
       <NotesInput refetchNotes={refecthNotes} />
     </section>
