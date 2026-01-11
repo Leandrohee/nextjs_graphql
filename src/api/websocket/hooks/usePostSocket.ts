@@ -10,10 +10,16 @@ export interface PostsProps {
   created_at: Date;
 }
 
+export interface PostDeleted {
+  cod_post_deleted: number;
+  message: string;
+}
+
 export const usePostSocket = () => {
   const [socket, setSocker] = useState<Socket | null>(null);
   const [newPost, setNewPost] = useState<PostsProps | null>(null);
   const [isConnected, setIsConnected] = useState<boolean>(false);
+  const [postDeleted, setPostDeleted] = useState<PostDeleted | null>(null);
 
   useEffect(() => {
     const newSocket = io('http://localhost:3000', {
@@ -23,12 +29,15 @@ export const usePostSocket = () => {
     newSocket.on('connect', () => setIsConnected(true));
 
     newSocket.on('newPost', (post: PostsProps) => {
-      // setNewPost((prev) => [post, ...prev]);
       setNewPost(post);
+    });
+
+    newSocket.on('postDeleted', (postDeleted: PostDeleted) => {
+      setPostDeleted(postDeleted);
     });
 
     setSocker(newSocket);
   }, []);
 
-  return { socket, newPost, isConnected };
+  return { socket, newPost, isConnected, postDeleted };
 };

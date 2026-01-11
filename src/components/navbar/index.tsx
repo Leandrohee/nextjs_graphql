@@ -29,7 +29,7 @@ export default function Navbar() {
             className="absolute top-0 right-0 bottom-0 w-[300px] h-[500px] bg-[#bbbbbb] rounded-bl-[20px] z-2"
             variants={sidebarVariants}
           />
-          <Navigation />
+          <Navigation isOpen={isOpen} />
           <MenuToggle toggle={() => setIsOpen(!isOpen)} />
         </motion.nav>
       </div>
@@ -65,9 +65,15 @@ const Itens = [
   },
 ];
 
-const Navigation = () => (
+interface NavigationProps {
+  isOpen: boolean;
+}
+
+const Navigation = ({ isOpen }: NavigationProps) => (
   <motion.ul
-    className="list-none p-[25px] m-0 absolute top-20 right-0 w-[230px] h-[400px] z-100"
+    className={`list-none p-[25px] m-0 absolute top-20 right-0 w-[230px] h-[400px] ${
+      isOpen ? 'z-2' : '-z-2'
+    }`}
     variants={navVariants}
   >
     {Itens.map((i, index) => (

@@ -98,6 +98,16 @@ export interface UpdateNoteResponse {
   message: string;
 }
 
+export interface GetPostResponse {
+  cod_post: number;
+  cod_user: number;
+  content: string;
+  /** @format date-time */
+  created_at: string;
+  /** @format date-time */
+  updated_at: string;
+}
+
 import type {
   AxiosInstance,
   AxiosRequestConfig,
@@ -393,6 +403,23 @@ export class Api<
         method: "PUT",
         body: data,
         type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+  };
+  post = {
+    /**
+     * No description
+     *
+     * @tags Post
+     * @name PostControllerGetPosts
+     * @summary Get all the posts realated to one user
+     * @request GET:/post
+     */
+    postControllerGetPosts: (params: RequestParams = {}) =>
+      this.request<GetPostResponse[], any>({
+        path: `/post`,
+        method: "GET",
         format: "json",
         ...params,
       }),
